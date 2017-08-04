@@ -1,0 +1,23 @@
+{
+    "name": "Dwdm/Fcm",
+    "description": "Fcm plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "require": {
+        "cakephp/cakephp": "^3.4",
+        "paragraph1/php-fcm": "^0.7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dwdm\\Fcm\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dwdm\\Fcm\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}
