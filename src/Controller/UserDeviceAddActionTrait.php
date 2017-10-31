@@ -7,6 +7,7 @@ namespace Dwdm\Fcm\Controller;
 
 use Cake\Controller\Component\AuthComponent;
 use Cake\Network\Request;
+use Dwdm\Fcm\Model\Entity\UserDevice;
 use Dwdm\Fcm\Model\Table\UserDevicesTable;
 
 /**
@@ -28,16 +29,15 @@ trait UserDeviceAddActionTrait
     {
         $this->request->allowMethod('post');
 
-        $userDevice = $this->UserDevices->find()
-            ->where($this->request->getData() + ['user_id' => $this->Auth->user('id')])
-            ->first();
-
-        if (!$userDevice) {
-            $userDevice = $this->UserDevices->newEntity($this->request->getData());
-            $userDevice->user_id = $this->Auth->user('id');
-
-            $this->UserDevices->save($userDevice);
-        }
+        $userDevice = $this->UserDevices->findOrCreate(
+            $this->request->getData(),
+            function (UserDevice $entity) {
+                $entity->user_id = $this->Auth->user('id');
+                return $entity;
+            }
+        );
+        $userDevice->user_id = $this->Auth->user('id');
+        $this->UserDevices->save($userDevice);
 
         $errors = $userDevice->getErrors();
         $message = empty($errors)
