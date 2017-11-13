@@ -29,6 +29,7 @@ trait UserDeviceAddActionTrait
     {
         $this->request->allowMethod('post');
 
+        $this->UserDevices->setEntityClass(UserDevice::class);
         $userDevice = $this->UserDevices->findOrCreate(
             $this->request->getData(),
             function (UserDevice $entity) {
