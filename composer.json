@@ -3,7 +3,7 @@
     "description": "Fcm plugin for CakePHP",
     "type": "cakephp-plugin",
     "require": {
-        "cakephp/cakephp": "^3.4",
+        "cakephp/cakephp": "~3.4",
         "paragraph1/php-fcm": "^0.7.0"
     },
     "require-dev": {
