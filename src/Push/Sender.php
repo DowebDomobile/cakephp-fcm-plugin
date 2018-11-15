@@ -61,9 +61,7 @@ class Sender
      */
     protected function _strategySingle(Query $userDevices, array $options = [])
     {
-        $systems = $this->Devices->find('systemList')->all();
-
-        foreach ($systems as $system) {
+        foreach ($this->Devices->find('systemList')->toArray() as $system) {
             if (!($messageBuilder = $this->_getMessageBuilder($system, '', $options))) {
                 $this->log(__d('fcm-debug', 'No message builders found for {0}.', [ucfirst($system)]), LogLevel::DEBUG);
 
