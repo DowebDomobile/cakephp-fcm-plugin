@@ -1,5 +1,5 @@
 {
-    "name": "DowebDomobile/cakephp-fcm-plugin",
+    "name": "dowebdomobile/cakephp-fcm-plugin",
     "description": "Fcm plugin for CakePHP",
     "type": "cakephp-plugin",
     "require": {
